@@ -363,17 +363,8 @@ namespace FirmwareXmlGenShared
             FirmwareFile thisOriginal;
             foreach (FirmwareFile fwFile in _firmwareFiles)
             {
-				// TODO - BIG HACK TO PROCEED IN DEBUGGING
-				fwFile.DontDownload = false;
-
                 CheckParameters(fwFile);
                 _fwFilesOriginals.TryGetValue(fwFile.Type + fwFile.BAVersion + fwFile.Sha1, out thisOriginal);
-
-				// TODO - for debugging purposes
-				bool fwEqual = Equals(fwFile, thisOriginal);
-				if (!fwEqual) {
-					Console.WriteLine ("Poop");
-				}
 
                 //will execute in 2 conditions:
                 //1) force download is checked
